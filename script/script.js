@@ -6,11 +6,9 @@ let count= 1;
 let checked =0;
 let squares = [];
 
-
-
-let startBtn = document.getElementById("startBtn");
-let roundBtn = document.getElementById("roundBtn");
-let restartBtn = document.getElementById("restartBtn");
+let start_btn = document.getElementById("startBtn");
+let round_btn = document.getElementById("roundBtn");
+let restart_btn = document.getElementById("restartBtn");
 
 let player1Score = document.getElementById("player-1-score");
 let score1 = parseInt(player1Score.innerHTML);
@@ -19,9 +17,16 @@ let score2 = parseInt(player2Score.innerHTML);
 
 let record = document.getElementById("record");
 
-startBtn.addEventListener("click", startGame)
-roundBtn.addEventListener("click", newRound)
-restartBtn.addEventListener("click", restart)
+
+start_btn.addEventListener("click", startGame)
+round_btn.addEventListener("click", newRound)
+restart_btn.addEventListener("click", restart)
+
+function restart()
+{
+    location.reload();
+}
+
 
 function getName() 
 {
@@ -82,33 +87,26 @@ function newRound()
     }
 }
 
-function end(num1,num2,num3)
-{
-    if(squares[num1] == "X" && checked == 0)
-    {
-        title.innerHTML = player1 + " is the WINNER";
-        score1 += 1;
-        player1Score.innerHTML = score1;
-        let new_record = document.createElement("h3");
-        new_record.innerHTML = "Round " + count + " : "+ player1 +" is the WINNER.";
-        record.append(new_record);
-    }
 
-    else if(squares[num1] == "O" && checked ==0)
+
+function game(id)
+{
+    let element = document.getElementById(id)
+    if(turn ==="player1" && element.innerHTML =="")
     {
-        title.innerHTML = player2 + " is the WINNER";
-        score2 += 1;
-        player2Score.innerHTML = score2;
-        let new_record = document.createElement("h3");
-        new_record.innerHTML = "Round " + count + " : "+ player2 +" is the WINNER.";
-        record.append(new_record);
+        element.innerHTML = "X";
+        turn = "player2";
+        title.innerHTML=player2 + "'s Turn Now";
     }
-    
-    document.getElementById("box"+ num1).style.background = "rgba(0, 0, 0, 0.7)";
-    document.getElementById("box"+ num2).style.background = "rgba(0, 0, 0, 0.7)";
-    document.getElementById("box"+ num3).style.background = "rgba(0, 0, 0, 0.7)";
-    turn=""
+    else if( turn ==="player2" && element.innerHTML =="" )
+    {
+        element.innerHTML = "O";
+        turn ="player1";
+        title.innerHTML=player1 + "'s Turn Now";
+    }
+    winner();
 }
+
 
 
 function winner()
@@ -181,27 +179,33 @@ function winner()
     }
 }
 
-
-
-function game(id)
+function end(num1,num2,num3)
 {
-    let element = document.getElementById(id)
-    if(turn ==="player1" && element.innerHTML =="")
+    if(squares[num1] == "X" && checked == 0)
     {
-        element.innerHTML = "X";
-        turn = "player2";
-        title.innerHTML=player2 + "'s Turn Now";
+        title.innerHTML = player1 + " is the WINNER";
+        score1 += 1;
+        player1Score.innerHTML = score1;
+        let new_record = document.createElement("h3");
+        new_record.innerHTML = "Round " + count + " : "+ player1 +" is the WINNER.";
+        record.append(new_record);
     }
-    else if( turn ==="player2" && element.innerHTML =="" )
+
+    else if(squares[num1] == "O" && checked ==0)
     {
-        element.innerHTML = "O";
-        turn ="player1";
-        title.innerHTML=player1 + "'s Turn Now";
+        title.innerHTML = player2 + " is the WINNER";
+        score2 += 1;
+        player2Score.innerHTML = score2;
+        let new_record = document.createElement("h3");
+        new_record.innerHTML = "Round " + count + " : "+ player2 +" is the WINNER.";
+        record.append(new_record);
     }
-    winner();
+    
+    document.getElementById("box"+ num1).style.background = "rgba(0, 0, 0, 0.7)";
+    document.getElementById("box"+ num2).style.background = "rgba(0, 0, 0, 0.7)";
+    document.getElementById("box"+ num3).style.background = "rgba(0, 0, 0, 0.7)";
+    turn=""
 }
 
-function restart()
-{
-    location.reload();
-}
+
+
