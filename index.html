@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Tic Tac Toe</title>
+</head>
+
+<body>
+
+    <div id="container">
+
+        <div class="form">
+
+            <div>
+                <div>
+                    <div class="names">First Player Name</div>
+                    <input type="text" id="player-1" placeholder="First Player" required />
+                </div>
+                <div>
+                    <div class="names">Second Player Name</div>
+                    <input type="text" id="player-2" placeholder="Second Player" required />
+                </div>
+            </div>
+
+            <button id="startBtn">Start</button>
+        </div>
+
+        <div class="game">
+
+            <h1>Tic Tac Toe</h1>
+
+            <div class="box-container">
+                <div class="box" id="box1" onclick="game(this.id)"></div>
+                <div class="box" id="box2" onclick="game(this.id)"></div>
+                <div class="box" id="box3" onclick="game(this.id)"></div>
+                <div class="box" id="box4" onclick="game(this.id)"></div>
+                <div class="box" id="box5" onclick="game(this.id)"></div>
+                <div class="box" id="box6" onclick="game(this.id)"></div>
+                <div class="box" id="box7" onclick="game(this.id)"></div>
+                <div class="box" id="box8" onclick="game(this.id)"></div>
+                <div class="box" id="box9" onclick="game(this.id)"></div>
+            </div>
+            <h2 id="statusText"></h2>
+            <div class="btn-sec">
+
+                <button id="restartBtn">Restart</button>
+                <button id="roundBtn">New Round</button>
+            </div>
+        </div>
+
+        <div class="score-sys">
+
+            <h2>Results</h2>
+
+            <div class="players">
+
+                <div class="player-score">
+                    <h3 id="player1-box">player 1</h3>
+                    <div class="score" id="player-1-score">0</div>
+                </div>
+                <div class="player-score">
+                    <h3 id="player2-box">player 2</h3>
+                    <div class="score" id="player-2-score">0</div>
+                </div>
+            </div>
+
+            <div class="record">
+
+                <h2 id="history">history</h2>
+
+                <div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <script src="script/script.js"></script>
+
+</body>
+
+</html>
